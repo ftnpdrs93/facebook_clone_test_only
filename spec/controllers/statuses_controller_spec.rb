@@ -23,7 +23,9 @@ RSpec.describe StatusesController, type: :controller do
       expect(response).to render_template("new")
     end
 
-    it "assigns instance post" do
+
+    it "assigns instance status" do
+
       expect(assigns[:status]).to be_a Status
     end
   end
@@ -39,7 +41,8 @@ RSpec.describe StatusesController, type: :controller do
         expect {post :create, :status => valid_params}.to change(Status, :count).by(1)
       end
 
-      it 'redirects to post path and displays flash notice after status is created successfully' do
+      it 'redirects status path and displays flash notice after status is created successfully' do
+
         post :create, status: valid_params
         expect(response).to redirect_to(Status.last)
         expect(flash[:notice]).to eq "Status is created successfully."
